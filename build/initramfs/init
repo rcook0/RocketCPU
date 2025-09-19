@@ -1,0 +1,24 @@
+#!/bin/sh
+# /init — minimal SPAD test in initramfs
+
+mount -t proc proc /proc
+mount -t sysfs sys /sys
+
+echo "[INIT] Booted into YourCorp SoC initramfs"
+
+# Wait for SPAD64 driver to appear
+for i in $(seq 1 10); do
+    if [ -e /dev/spad64 ]; then
+        echo "[INIT] Found /dev/spad64"
+        break
+    fi
+    sleep 1
+done
+
+# Simple write/read test
+echo "hello_spad" > /dev/spad64
+echo "[INIT] Read back from /dev/spad64:"
+cat /dev/spad64
+
+# Drop to shell
+exec /bin/sh

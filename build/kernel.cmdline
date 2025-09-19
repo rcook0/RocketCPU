@@ -1,0 +1,1 @@
+root=/dev/ram0 rw earlycon console=ttyS0,115200n8 yourcorp.spad64_base=0x7000000000 yourcorp.interconnect_base=0x8000000000 cpufreq.default_governor=schedutil memmap=64M$0x7000000000 

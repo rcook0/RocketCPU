@@ -1,0 +1,28 @@
+/dts-v1/;
+
+/ {
+    soc {
+        compatible = "yourcorp,soc";
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+
+        /* SPAD64 scratchpad */
+        spad64@7000000000 {
+            compatible = "yourcorp,spad64";
+            reg = <0x70 0x00000000 0x0 0x04000000>; /* 64 MiB */
+            dma-coherent;
+        };
+
+        /* Interconnect manager MMIO */
+        interconnect@8000000000 {
+            compatible = "yourcorp,interconnect";
+            reg = <0x80 0x00000000 0x0 0x00010000>; /* 64 KiB */
+        };
+
+        /* cpufreq DVFS control */
+        cpufreq {
+            compatible = "yourcorp,cpufreq";
+        };
+    };
+};

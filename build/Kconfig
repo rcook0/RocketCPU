@@ -1,0 +1,2 @@
+config SOC
+    bool "YourCorp SoC"

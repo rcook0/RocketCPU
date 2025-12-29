@@ -1,0 +1,4 @@
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y openjdk-11-jdk scala curl git verilator build-essential && rm -rf /var/lib/apt/lists/*
+RUN curl -L -o /usr/share/keyrings/sbt.gpg https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x99E82A75642AC823 &&     echo "deb [signed-by=/usr/share/keyrings/sbt.gpg] https://repo.scala-sbt.org/scalasbt/debian all main" > /etc/apt/sources.list.d/sbt.list &&     echo "deb [signed-by=/usr/share/keyrings/sbt.gpg] https://repo.scala-sbt.org/scalasbt/debian /" > /etc/apt/sources.list.d/sbt_old.list &&     apt-get update && apt-get install -y sbt && rm -rf /var/lib/apt/lists/*
+WORKDIR /workspace

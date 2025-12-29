@@ -1,0 +1,49 @@
+version: v1_6_ground_truth
+isa:
+  profile: RV64GC
+  hard: true
+dvfs:
+  max_mhz: 2400
+  step_mhz: 200
+  policy: rate_max_step_down_firmware
+  hard: true
+pcie:
+  primary:
+    lanes: 16
+    gen: 4
+    hard: true
+  secondary:
+    ports:
+    - lanes: 4
+      gen: 3
+    - lanes: 4
+      gen: 3
+    soft: true
+    max_ports: 2
+cache:
+  global_l4_present: false
+  per_chiplet_l3_mib:
+    rocket_chiplet: 16
+    boom_chiplet: 24
+  hard: true
+spad64:
+  size_mib: 64
+  hard: true
+chiplets:
+  plan: 2x2
+  rocket_chiplet:
+    min_cores: 12
+    max_cores: 16
+    soft: true
+  boom_chiplet:
+    min_cores: 6
+    max_cores: 8
+    soft: true
+  chiplet3:
+    role: SPAD64+ASIC
+    reserved_fraction: 0.33
+    soft: true
+  chiplet4:
+    role: GPGPU+HBM
+    ucie_coherent_attach: true
+    soft: true

@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  dev:
+    image: ubuntu:22.04
+    command: bash -lc "sleep infinity"
+    volumes: [ ".:/workspace" ]
+    working_dir: /workspace
+    tty: true
+  chisel:
+    build:
+      context: .
+      dockerfile: Dockerfile.chisel
+    command: bash -lc "sleep infinity"
+    volumes: [ ".:/workspace" ]
+    working_dir: /workspace
+    tty: true

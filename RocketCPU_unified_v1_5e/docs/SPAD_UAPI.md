@@ -1,0 +1,1 @@
+See header for ioctl contract. Stable across RTL spins.
